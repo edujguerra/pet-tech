@@ -13,14 +13,25 @@ public class Pessoa {
 
     private String cpf;
 
+    private String email;
+
     public Pessoa(){
 
     }
 
-    public Pessoa(Long id, String nome, String cpf) {
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Pessoa(Long id, String nome, String cpf, String email) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
+        this.email = email;
     }
 
     public Long getId() {
@@ -53,6 +64,7 @@ public class Pessoa {
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", cpf='" + cpf + '\'' +
+                ", email='" + email + '\'' +
                 '}';
     }
 }

@@ -3,7 +3,6 @@ package br.com.fiap.pettech.service;
 import br.com.fiap.pettech.ControllerNotFoundException;
 import br.com.fiap.pettech.dto.PessoaDTO;
 import br.com.fiap.pettech.entities.Pessoa;
-import br.com.fiap.pettech.entities.Produto;
 import br.com.fiap.pettech.repository.PessoaRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +42,7 @@ public class PessoaService {
             Pessoa buscaPessoa = repo.getReferenceById(id);
             buscaPessoa.setNome(pessoaDTO.nome());
             buscaPessoa.setCpf(pessoaDTO.cpf());
+            buscaPessoa.setEmail(pessoaDTO.email());
             buscaPessoa = repo.save(buscaPessoa);
 
             return toPessoaDTO(buscaPessoa);
@@ -59,7 +59,8 @@ public class PessoaService {
         return new PessoaDTO(
                 pessoa.getId(),
                 pessoa.getNome(),
-                pessoa.getCpf()
+                pessoa.getCpf(),
+                pessoa.getEmail()
         );
     }
 
@@ -67,7 +68,8 @@ public class PessoaService {
         return new Pessoa(
                 pessoaDTO.id(),
                 pessoaDTO.nome(),
-                pessoaDTO.cpf()
+                pessoaDTO.cpf(),
+                pessoaDTO.email()
         );
     }
 }
